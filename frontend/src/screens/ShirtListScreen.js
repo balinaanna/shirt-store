@@ -30,7 +30,12 @@ const ShirtListScreen = () => {
       <FlatList
         data={shirts}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => <Text>{item.id}</Text>}
+        renderItem={({ item }) => (
+          <>
+            <Text>{item.name}</Text>
+            <Text>${parseFloat(item.price).toFixed(2)}</Text>
+          </>
+        )}
       />
     </View>
   );
