@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, View, Text, ActivityIndicator } from 'react-native';
+import ShirtCard from '../components/ShirtCard';
 import { fetchShirts } from '../api';
 
 const ShirtListScreen = () => {
@@ -30,12 +31,7 @@ const ShirtListScreen = () => {
       <FlatList
         data={shirts}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => (
-          <>
-            <Text>{item.name}</Text>
-            <Text>${parseFloat(item.price).toFixed(2)}</Text>
-          </>
-        )}
+        renderItem={({ item }) => <ShirtCard shirt={item} />}
       />
     </View>
   );
