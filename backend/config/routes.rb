@@ -7,5 +7,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  post "calculate_total", to: "shopping_carts#calculate_total"
+
   resources :shirts, only: [:index]
 end
