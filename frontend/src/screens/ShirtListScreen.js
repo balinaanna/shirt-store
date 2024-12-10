@@ -6,6 +6,7 @@ import { fetchShirts } from '../api';
 const ShirtListScreen = () => {
   const [shirts, setShirts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [cart, setCart] = useState({});
 
   useEffect(() => {
     const getShirts = async () => {
@@ -22,6 +23,18 @@ const ShirtListScreen = () => {
     getShirts();
   }, []);
 
+  const handleChangeQuantity = (id, number) => {
+    setCart((prevCart) => {
+      const updatedCart = { ...prevCart };
+      if (number === 0) {
+        delete updatedCart[id];
+      } else {
+        updatedCart[id] = { id, quantity: number };
+      }
+      return updatedCart;
+    });
+  };
+
   if (loading) {
     return <ActivityIndicator size='large' />;
   }
@@ -31,7 +44,9 @@ const ShirtListScreen = () => {
       <FlatList
         data={shirts}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => <ShirtCard shirt={item} />}
+        renderItem={({ item }) => (
+          <ShirtCard shirt={item} onChangeQuantity={handleChangeQuantity} />
+        )}
       />
     </View>
   );
