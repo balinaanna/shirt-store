@@ -8,7 +8,10 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <StatusBar style='auto' />
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView
+        style={styles.container}
+        className='w-full max-w-screen-sm mx-auto'
+      >
         <ShirtListScreen />
       </SafeAreaView>
     </SafeAreaProvider>
