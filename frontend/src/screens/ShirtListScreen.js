@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { FlatList, View, Text, ActivityIndicator } from 'react-native';
 import ShirtCard from '../components/ShirtCard';
 import { calculateCartTotal, fetchShirts } from '../api';
@@ -44,7 +44,7 @@ const ShirtListScreen = () => {
     calculateTotal();
   }, [cart]);
 
-  const handleChangeQuantity = (id, number) => {
+  const handleChangeQuantity = useCallback((id, number) => {
     setCart((prevCart) => {
       const updatedCart = { ...prevCart };
       if (number === 0) {
@@ -54,7 +54,7 @@ const ShirtListScreen = () => {
       }
       return updatedCart;
     });
-  };
+  }, []);
 
   if (loading) {
     return <ActivityIndicator size='large' />;

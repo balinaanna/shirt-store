@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { View, Text } from 'react-native';
 import Counter from 'react-native-counters';
 
-const ShirtCard = ({ shirt, onChangeQuantity }) => {
+const ShirtCard = memo(({ shirt, onChangeQuantity }) => {
   return (
     <View className='flex-row mv-4 p-4 border-b border-gray-100'>
       <View className='flex-1'>
@@ -20,6 +20,6 @@ const ShirtCard = ({ shirt, onChangeQuantity }) => {
       </View>
     </View>
   );
-};
+});
 
 export default ShirtCard;
