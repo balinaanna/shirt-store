@@ -61,7 +61,7 @@ const ShirtListScreen = () => {
   }
 
   return (
-    <View>
+    <View className='flex-1 self-stretch py-12 px-4 bg-white'>
       <FlatList
         data={shirts}
         keyExtractor={(item) => item.id.toString()}
@@ -69,8 +69,10 @@ const ShirtListScreen = () => {
           <ShirtCard shirt={item} onChangeQuantity={handleChangeQuantity} />
         )}
       />
-      <View>
-        <Text>Cart Total: ${parseFloat(total).toFixed(2)}</Text>
+      <View className='flex-column items-center'>
+        <Text className='text-xl font-semibold'>
+          Cart Total: ${parseFloat(total).toFixed(2)}
+        </Text>
       </View>
     </View>
   );
