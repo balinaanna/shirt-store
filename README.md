@@ -37,7 +37,7 @@ Run test suit with:
 
 ```sh
 cd backend
-rspec
+rspec --format documentation
 ```
 
 ### How discounts are calculated
